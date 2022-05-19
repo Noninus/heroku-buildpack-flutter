@@ -53,8 +53,9 @@ if [ -n "$FLUTTER_VERSION" ]; then
   # Check if the FLUTTER_VERSION is the same with the installed one.
   if [ "$FLUTTER_VERSION" != "$FLUTTER_INSTALLED_VERSION" ]; then
     print "Installing Flutter SDK version : $FLUTTER_VERSION"
-    flutter/bin/flutter checkout v$FLUTTER_VERSION --quiet | indent
-    flutter/bin/flutter doctor | indent
+    flutter/bin/flutter channel master
+    flutter/bin/flutter downgrade v$FLUTTER_VERSION --quiet | indent
+    flutter/bin/flutter --version | indent
   fi
   rm flutter.json
 
